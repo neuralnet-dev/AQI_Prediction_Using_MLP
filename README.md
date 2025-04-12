@@ -2,6 +2,7 @@
 # AQI Prediction Using MLP Regressor
 
 This project applies a **Multilayer Perceptron (MLP) Regressor** to predict **Air Quality Index (AQI)** based on pollutant data collected from Indian cities. The model is trained using the `city_day.csv` dataset, which contains daily air pollution readings along with AQI values.
+Built and developed by Amith S Patil, Asher Jarvis Pinto, Henry Gladson, Fariza Nuha Farooq and Lavanya Devadiga.
 
 ---
 
@@ -42,36 +43,12 @@ This project applies a **Multilayer Perceptron (MLP) Regressor** to predict **Ai
 
 ---
 
-## Model Performance ( Sigmoid Activation )
+## Model Performance ( Logistic Activation )
 
 ```
 Mean Absolute Error: 22.420
 Mean Squared Error: 2153.021
 R-squared (R²) Score: 0.887
-```
-
----
-
-## Requirements
-
-- `pandas`
-- `numpy`
-- `matplotlib`
-- `seaborn`
-- `scikit-learn`
-
-Install with:
-
-```bash
-pip install pandas numpy matplotlib seaborn scikit-learn
-```
-
----
-
-## Run the Code
-
-```bash
-python aqi_prediction.py
 ```
 
 Make sure `city_day.csv` is in the same directory.

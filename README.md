@@ -42,12 +42,12 @@ This project applies a **Multilayer Perceptron (MLP) Regressor** to predict **Ai
 
 ---
 
-## Model Performance (Sample Output)
+## Model Performance ( Sigmoid Activation )
 
 ```
-Mean Absolute Error: 30.56
-Mean Squared Error: 1805.67
-R-squared (R²) Score: 0.78
+Mean Absolute Error: 22.420
+Mean Squared Error: 2153.021
+R-squared (R²) Score: 0.887
 ```
 
 ---

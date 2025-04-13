@@ -11,9 +11,6 @@ from sklearn.metrics import mean_absolute_error, r2_score, mean_squared_error
 
 df = pd.read_csv("city_day.csv")
 
-df.head()
-
-# Dataset Information
 data_info = {
     "shape": df.shape,
     "columns": df.columns.tolist(),
@@ -22,7 +19,22 @@ data_info = {
     "missing_values": df.isnull().sum()
 }
 
-data_info
+print("Data Information:")
+print("-" * 30)
+
+print(f"Shape: {data_info['shape']}")
+print("\nColumns:")
+for col in data_info['columns']:
+        print(f"  - {col}")
+
+print("\nInfo:")
+print(data_info['info'])
+
+print("\nMissing Values:")
+print(data_info['missing_values'])
+
+print("\nHead:")
+print(data_info['head'])
 
 df = df.dropna(subset="AQI")
 df = df.drop(columns=["Date", "AQI_Bucket"], axis=1)
@@ -31,10 +43,14 @@ for col in df.columns:
         df[col]=df[col].fillna(df[col].median())
 df.isnull().sum()
 
-print(list(df['City'].unique())) 
+
+#using LabelEncoder to use City: a str data column 
+df1 = df['City'].unique()
+print("\nUnique City Names:")
+for name in df1:
+        print(f"  - {name}") #lists out all city names
 label_encoder = LabelEncoder()
 df['City'] = LabelEncoder().fit_transform(df['City']) 
-print(list(df['City'].unique())) 
 
 # Heatmap
 plt.figure(figsize=(12, 10))
@@ -50,6 +66,8 @@ x_train, x_test, y_train, y_test = train_test_split(x,y,test_size=0.3, random_st
 scaler = StandardScaler()
 x_train = scaler.fit_transform(x_train)
 x_test = scaler.transform(x_test)
+y_train = scaler.fit_transform(y_train.values.reshape(-1, 1))
+y_test = scaler.transform(y_test.values.reshape(-1, 1))
 
 mlp = MLPRegressor(hidden_layer_sizes=(64, 32),
                    activation='logistic', solver='adam',
@@ -59,7 +77,7 @@ y_pred = mlp.predict(x_test)
 
 # Evaluation metrics - MAE, MSE and R^2
 mae = mean_absolute_error(y_test, y_pred)
-print("Mean Absolute Error:", mae)
+print("\nMean Absolute Error:", mae)
 mse = mean_squared_error(y_test, y_pred)
 print("Mean Squared Error:", mse)
 r2 = r2_score(y_test, y_pred)
@@ -77,7 +95,7 @@ plt.show()
 
 subset_size = 100 
 points = np.arange(subset_size)
-y_test_subset = y_test.values[:subset_size]
+y_test_subset = y_test[:subset_size]
 y_pred_subset = y_pred[:subset_size]
 plt.figure(figsize=(12, 6))  # Adjust figure size
 plt.plot(points, y_test_subset, color='red', label='Actual AQI')

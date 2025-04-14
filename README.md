@@ -46,9 +46,9 @@ Built and developed by Amith S Patil, Asher Jarvis Pinto, Henry Gladson, Fariza 
 ## Model Performance ( Logistic Activation )
 
 ```
-Mean Absolute Error: 22.420
-Mean Squared Error: 2153.021
-R-squared (R²) Score: 0.887
+Mean Absolute Error: 0.16124993656149952
+Mean Squared Error: 0.10658939570522047
+R-squared (R²) Score: 0.8883794196602596
 ```
 
 Make sure `city_day.csv` is in the same directory.
